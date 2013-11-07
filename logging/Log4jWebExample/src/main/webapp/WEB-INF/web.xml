@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<!--    <servlet>
+        <servlet-name>LoggingInit</servlet-name>
+        <servlet-class>com.st.loggingwebexample.LoggingInit</servlet-class>
+        <init-param>
+            <param-name>log4j-conf-file</param-name>
+            <param-value>WEB-INF/classes/log4j.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <description/>
+        <display-name>LoggingDemo</display-name>
+        <servlet-name>LoggingDemo</servlet-name>
+        <servlet-class>com.st.loggingwebexample.LoggingDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoggingDemo</servlet-name>
+        <url-pattern>/LoggingDemo</url-pattern>
+    </servlet-mapping>
+   <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>com.st.loggingwebexample.LoggingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+</web-app>
