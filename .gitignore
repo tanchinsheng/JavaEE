@@ -213,3 +213,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/cave/JSPServlet/HelloWorld/target/
+/cave/JSPServlet/Deployment/target/
+/cave/Spring/mavenproject1/testprog/target/
+/cave/Spring/mavenproject1/spring-tutorial-5/target/
+/cave/Spring/spring-tutorial-6/target/
