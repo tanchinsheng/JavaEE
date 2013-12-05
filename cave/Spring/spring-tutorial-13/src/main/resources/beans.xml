@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">   
+    
+    <bean id = "basket" class = "com.caveofprogramming.spring.test.FruitBasket">
+        <constructor-arg value="John's basket"/>
+        <constructor-arg> 
+<!--            <list>
+                <value>apple</value>
+                <value>orange</value>
+                <value>kiwi</value>
+            </list>-->
+            <set>
+                <value>apple</value>
+                <value>orange</value>
+                <value>kiwi</value>
+                <value>orange</value>
+            </set>
+        </constructor-arg>
+    </bean>
+
+</beans>

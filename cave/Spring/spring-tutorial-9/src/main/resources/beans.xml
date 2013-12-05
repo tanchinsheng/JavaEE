@@ -15,6 +15,4 @@
          <constructor-arg name="street" value="1 Church Lane"/>
          <constructor-arg name="postcode" value="9876"/>
     </bean>   
-    
-    
 </beans>
