@@ -7,7 +7,6 @@
 
 	<bean id="logger" class="com.caveofprogramming.spring.test.Logger"
 		autowire="constructor">
-
 	</bean>
 
 	<bean name="consolewriter" class="com.caveofprogramming.spring.test.ConsoleWriter">

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class Logger {
 
-	// @Autowired - can autowire properties themselves; don't even need the set
+    // @Autowired - can autowire properties themselves; don't even need the set
     // methods!
     private ConsoleWriter consoleWriter;
 
@@ -29,12 +29,12 @@ public class Logger {
      * purely by type. As always, there must be no ambiguity! There must be one
      * and only one autowire candidate bean for each property that you're autowiring.
      */
-    @Autowired
-    public void setConsoleWriter(ConsoleWriter writer) {
+    @Autowired // byType
+    public void setConsoleWriterZXCVB(ConsoleWriter writer) {
         this.consoleWriter = writer;
     }
 
-    @Autowired
+    @Autowired // byType
     public void setFileWriter(FileWriter fileWriter) {
         this.fileWriter = fileWriter;
     }

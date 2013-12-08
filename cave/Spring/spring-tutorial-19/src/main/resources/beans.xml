@@ -6,8 +6,13 @@
     <bean id="logger" class="com.caveofprogramming.spring.test.Logger"
           autowire="byType">
     </bean>
-
+    
+    <!--    
     <bean id="consolewriter" class="com.caveofprogramming.spring.test.ConsoleWriter">
+    </bean>
+    -->
+    
+    <bean class="com.caveofprogramming.spring.test.ConsoleWriter">
     </bean>
 
     <bean id="filewriter" class="com.caveofprogramming.spring.test.FileWriter">

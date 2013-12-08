@@ -5,10 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-autowire="byType"
        default-autowire-candidates="*Writer">
-
+       <!-- Default Autowiring -->
 
     <bean id="logger" class="com.caveofprogramming.spring.test.Logger">
-
     </bean>
 
     <bean id="consoleWriter" class="com.caveofprogramming.spring.test.ConsoleWriter">

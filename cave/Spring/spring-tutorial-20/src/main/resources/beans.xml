@@ -7,10 +7,18 @@
     <bean id="logger" class="com.caveofprogramming.spring.test.Logger"
               autowire="byName">
     </bean>
-
+    
+    <!--
+    Exception in thread "main" java.lang.NullPointerException
+	at com.caveofprogramming.spring.test.Logger.writeConsole(Logger.java:25)
+	at com.caveofprogramming.spring.test.App.main(App.java:14)
+    -->
+    <!--
+    <bean class="com.caveofprogramming.spring.test.ConsoleWriter">
+    </bean>
+    -->
     <bean id="consoleWriter" class="com.caveofprogramming.spring.test.ConsoleWriter">
     </bean>
-
     <bean id="fileWriter" class="com.caveofprogramming.spring.test.FileWriter">
     </bean>
 	

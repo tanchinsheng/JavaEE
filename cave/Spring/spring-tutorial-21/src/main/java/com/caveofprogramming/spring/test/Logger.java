@@ -9,6 +9,7 @@ public class Logger {
 	private LogWriter consoleWriter;
 	private LogWriter fileWriter;
 	
+        // Autowiring by Constructor
 	public Logger(ConsoleWriter consoleWriter, FileWriter fileWriter) {
 		this.consoleWriter = consoleWriter;
 		this.fileWriter = fileWriter;

@@ -5,14 +5,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-autowire="byType">
 
-
     <bean id="logger" class="com.caveofprogramming.spring.test.Logger">
-
     </bean>
 
     <bean id="consoleWriter"
           class="com.caveofprogramming.spring.test.ConsoleWriter"
           primary="true">
+        <!-- Removing Autowire Ambiguities -->
     </bean>
 
     <bean id="panda" class="com.caveofprogramming.spring.test.ConsoleWriter">
@@ -25,6 +24,7 @@
     <bean id="squirrel"
           class="com.caveofprogramming.spring.test.FileWriter"
           autowire-candidate="false">
+        <!-- Removing Autowire Ambiguities -->
     </bean>
 
 </beans>
