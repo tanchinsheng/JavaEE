@@ -5,15 +5,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
 
-    public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"beans.xml");
 
-        Person person1 = (Person) context.getBean("person");//Default singleton
-        person1.setTaxId(666);
-        Person person2 = (Person) context.getBean("person");//Default singleton
+		Person person1 = (Person) context.getBean("person");// Default singleton
+		person1.setTaxId(666);
+		System.out.println(person1);
+		Person person2 = (Person) context.getBean("person");// Default singleton
 
-        System.out.println(person2);
+		System.out.println(person2);
 
-        ((ClassPathXmlApplicationContext) context).close();
-    }
+		((ClassPathXmlApplicationContext) context).close();
+	}
 }
