@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="AddNumbersImplService" targetNamespace="http://server.fromjava/" xmlns:tns="http://server.fromjava/"
+ >
+    <message name="addNumbers"/>
+    <message name="addNumbersResponse"/>
+    <message name="AddNumbersException"/>
+    <portType name="AddNumbersImpl">
+        <operation name="addNumbers">
+            <input message="tns:addNumbers"/>
+            <output message="tns:addNumbersResponse"/>
+            <fault name="AddNumbersException" message="tns:AddNumbersException"/>
+        </operation>
+    </portType>
+    <binding name="AddNumbersImplPortBinding" type="tns:AddNumbersImpl">
+        <operation name="addNumbers">
+            <input/>
+            <output/>
+            <fault name="AddNumbersException"/>
+        </operation>
+    </binding>
+    <service name="AddNumbersImplService">
+        <port name="AddNumbersImplPort" binding="tns:AddNumbersImplPortBinding"/>
+    </service>
+</definitions>
+

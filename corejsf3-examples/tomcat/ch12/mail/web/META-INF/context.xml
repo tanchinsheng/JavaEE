@@ -1,0 +1,11 @@
+<!--  This file is only required for Tomcat -->
+<Context>
+   <Resource 
+      name="jdbc/mydb" 
+      auth="Container" 
+      type="javax.sql.DataSource"
+      username="APP" 
+      password="APP" 
+      driverClassName="org.apache.derby.jdbc.ClientDriver"
+      url="jdbc:derby://localhost:1527/COREJSF;create=true"/>
+</Context>

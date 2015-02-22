@@ -1,0 +1,32 @@
+# This file is for Tomcat 7.0.
+# Download and install the components that are missing
+# in Tomcat 7.0. Then edit the five xxx.dir variables below 
+
+# http://tomcat.apache.org/
+appserver.dir=/home/apps/apache-tomcat-7.0.0
+deploy.dir=${appserver.dir}/webapps
+
+# http://javaserverfaces.dev.java.net/
+jsf.dir=/home/apps/mojarra-2.0.2-FCS
+
+# Required for ch07/bean-validator and ch09/composite-date
+# http://sourceforge.net/projects/hibernate/files/hibernate-validator
+bean-validation.dir=/home/apps/hibernate-validator-4.1.0.Final
+
+# Optional--if you want to use CDI
+# http://seamframework.org/Weld
+cdi.dir=/home/apps/weld-1.0.0.SP1
+
+use-jsf-libs=true
+jsf.api.jar=${jsf.dir}/lib/jsf-api.jar
+jsf.impl.jar=${jsf.dir}/lib/jsf-impl.jar
+servlet.api.jar=${appserver.dir}/lib/servlet-api.jar
+# Mysteriously, we need to include the API JAR in the WAR file
+el.api.jar=${appserver.dir}/lib/el-api-2.2.jar
+# el.impl.jar=${el.dir}/el-impl-2.2.jar
+bean-validation.api.jar=${bean-validation.dir}/lib/validation-api-1.0.0.GA.jar
+bean-validation.impl.jar=${bean-validation.dir}/hibernate-validator-4.1.0.Final.jar
+bean-validation.lib.dir=${bean-validation.dir}/lib
+cdi.api.jar=${cdi.dir}/artifacts/weld/weld-servlet.jar
+cdi.impl.jar=${cdi.dir}/artifacts/weld/weld-servlet.jar
+

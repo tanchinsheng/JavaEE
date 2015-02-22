@@ -1,0 +1,9 @@
+<Context>
+<Resource name="jdbc/mydb" 
+          auth="Container" 
+          type="javax.sql.DataSource"               
+          username="app" 
+          password="app" 
+          driverClassName="org.apache.derby.jdbc.ClientDriver"
+          url="jdbc:derby://localhost:1527/COREJSF;create=true"/>
+</Context>

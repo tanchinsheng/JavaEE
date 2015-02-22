@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.2-hudson-182-RC1. --><definitions xmlns:tns="http://duke.example.org" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="AddNumbers" targetNamespace="http://duke.example.org">
+    <types>
+        <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://duke.example.org">
+            
+            <complexType name="addNumbersResponse">
+                <sequence>
+                    <element name="return" type="xsd:int"></element>
+                </sequence>
+            </complexType>
+            <element name="addNumbersResponse" type="tns:addNumbersResponse"></element>
+            
+            <complexType name="addNumbers">
+                <sequence>
+                    <element name="arg0" type="xsd:int"></element>
+                    <element name="arg1" type="xsd:int"></element>
+                </sequence>
+            </complexType>
+            <element name="addNumbers" type="tns:addNumbers"></element>
+            
+            <element name="AddNumbersFault" type="tns:AddNumbersFault"></element>
+            <complexType name="AddNumbersFault">
+                <sequence>
+                    <element name="faultInfo" type="xsd:string"></element>
+                    <element name="message" type="xsd:string"></element>
+                </sequence>
+            </complexType>
+            <complexType name="oneWayInt">
+                <sequence>
+                    <element name="arg0" type="xsd:int"></element>
+                </sequence>
+            </complexType>
+            <element name="oneWayInt" type="tns:oneWayInt"></element>
+        </xsd:schema>
+    </types>
+    <message name="addNumbers">
+        <part name="parameters" element="tns:addNumbers"></part>
+    </message>
+    <message name="addNumbersResponse">
+        <part name="result" element="tns:addNumbersResponse"></part>
+    </message>
+    <message name="addNumbersFault">
+        <part name="AddNumbersFault" element="tns:AddNumbersFault"></part>
+    </message>
+    <message name="oneWayInt">
+        <part name="parameters" element="tns:oneWayInt"></part>
+    </message>
+    <portType name="AddNumbersPortType">
+        <operation name="addNumbers">
+            <input message="tns:addNumbers" name="add"></input>
+            <output message="tns:addNumbersResponse" name="addResponse"></output>
+            <fault name="addNumbersFault" message="tns:addNumbersFault"></fault>
+        </operation>
+        <operation name="oneWayInt">
+            <input message="tns:oneWayInt"></input>
+        </operation>
+    </portType>
+    <binding name="AddNumbersBinding" type="tns:AddNumbersPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+        <operation name="addNumbers">
+            <soap:operation soapAction=""></soap:operation>
+            <input>
+                <soap:body use="literal"></soap:body>
+            </input>
+            <output>
+                <soap:body use="literal"></soap:body>
+            </output>
+            <fault name="addNumbersFault">
+                <soap:fault name="addNumbersFault" use="literal"></soap:fault>
+            </fault>
+        </operation>
+        <operation name="oneWayInt">
+            <soap:operation soapAction=""></soap:operation>
+            <input>
+                <soap:body use="literal"></soap:body>
+            </input>
+        </operation>
+    </binding>
+    <service name="AddNumbersService">
+        <port name="AddNumbersPort" binding="tns:AddNumbersBinding">
+            <soap:address location="http://localhost:8080/fromwsdlServer/AddNumbersService"></soap:address>
+        </port>
+    </service>
+</definitions>
