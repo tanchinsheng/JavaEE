@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConsultantEditDlg" widgetVar="ConsultantEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditConsultantTitle}">
+            <h:form id="ConsultantEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{consultantController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_consultantId}" for="consultantId" />
+                        <p:inputText id="consultantId" value="#{consultantController.selected.consultantId}" title="#{bundle.EditConsultantTitle_consultantId}" required="true" requiredMessage="#{bundle.EditConsultantRequiredMessage_consultantId}"/>
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{consultantController.selected.email}" title="#{bundle.EditConsultantTitle_email}" required="true" requiredMessage="#{bundle.EditConsultantRequiredMessage_email}"/>
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{consultantController.selected.password}" title="#{bundle.EditConsultantTitle_password}" required="true" requiredMessage="#{bundle.EditConsultantRequiredMessage_password}"/>
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_hourlyRate}" for="hourlyRate" />
+                        <p:inputText id="hourlyRate" value="#{consultantController.selected.hourlyRate}" title="#{bundle.EditConsultantTitle_hourlyRate}" required="true" requiredMessage="#{bundle.EditConsultantRequiredMessage_hourlyRate}"/>
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_billableHourlyRate}" for="billableHourlyRate" />
+                        <p:inputText id="billableHourlyRate" value="#{consultantController.selected.billableHourlyRate}" title="#{bundle.EditConsultantTitle_billableHourlyRate}" required="true" requiredMessage="#{bundle.EditConsultantRequiredMessage_billableHourlyRate}"/>
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_hireDate}" for="hireDate" />
+                        <p:calendar id="hireDate" pattern="MM/dd/yyyy" value="#{consultantController.selected.hireDate}" title="#{bundle.EditConsultantTitle_hireDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_resume}" for="resume" />
+                        <p:inputTextarea rows="4" cols="30" id="resume" value="#{consultantController.selected.resume}" title="#{bundle.EditConsultantTitle_resume}" />
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_recruiterId}" for="recruiterId" />
+                        <p:selectOneMenu id="recruiterId" value="#{consultantController.selected.recruiterId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{recruiterController.itemsAvailableSelectOne}"
+                                           var="recruiterIdItem"
+                                           itemValue="#{recruiterIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditConsultantLabel_statusId}" for="statusId" />
+                        <p:selectOneMenu id="statusId" value="#{consultantController.selected.statusId}" required="true" requiredMessage="#{bundle.EditConsultantRequiredMessage_statusId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{consultantStatusController.itemsAvailableSelectOne}"
+                                           var="statusIdItem"
+                                           itemValue="#{statusIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{consultantController.update}" value="#{bundle.Save}" update="display,:ConsultantListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ConsultantEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ConsultantEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

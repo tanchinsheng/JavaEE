@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BillableViewDlg" widgetVar="BillableViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBillableTitle}">
+            <h:form id="BillableViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{billableController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBillableLabel_billableId}"/>
+                        <h:outputText value="#{billableController.selected.billableId}" title="#{bundle.ViewBillableTitle_billableId}"/>
+                        <h:outputText value="#{bundle.ViewBillableLabel_startDate}"/>
+                        <h:outputText value="#{billableController.selected.startDate}" title="#{bundle.ViewBillableTitle_startDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBillableLabel_endDate}"/>
+                        <h:outputText value="#{billableController.selected.endDate}" title="#{bundle.ViewBillableTitle_endDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBillableLabel_hours}"/>
+                        <h:outputText value="#{billableController.selected.hours}" title="#{bundle.ViewBillableTitle_hours}"/>
+                        <h:outputText value="#{bundle.ViewBillableLabel_hourlyRate}"/>
+                        <h:outputText value="#{billableController.selected.hourlyRate}" title="#{bundle.ViewBillableTitle_hourlyRate}"/>
+                        <h:outputText value="#{bundle.ViewBillableLabel_billableHourlyRate}"/>
+                        <h:outputText value="#{billableController.selected.billableHourlyRate}" title="#{bundle.ViewBillableTitle_billableHourlyRate}"/>
+                        <h:outputText value="#{bundle.ViewBillableLabel_description}"/>
+                        <h:outputText value="#{billableController.selected.description}" title="#{bundle.ViewBillableTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewBillableLabel_artifacts}"/>
+                        <h:outputText value="#{billableController.selected.artifacts}" title="#{bundle.ViewBillableTitle_artifacts}"/>
+                        <h:outputText value="#{bundle.ViewBillableLabel_project}"/>
+                        <h:outputText value="#{billableController.selected.project}" title="#{bundle.ViewBillableTitle_project}"/>
+                        <h:outputText value="#{bundle.ViewBillableLabel_consultantId}"/>
+                        <h:outputText value="#{billableController.selected.consultantId}" title="#{bundle.ViewBillableTitle_consultantId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BillableViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

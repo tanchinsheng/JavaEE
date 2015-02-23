@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RecruiterViewDlg" widgetVar="RecruiterViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRecruiterTitle}">
+            <h:form id="RecruiterViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{recruiterController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRecruiterLabel_recruiterId}"/>
+                        <h:outputText value="#{recruiterController.selected.recruiterId}" title="#{bundle.ViewRecruiterTitle_recruiterId}"/>
+                        <h:outputText value="#{bundle.ViewRecruiterLabel_email}"/>
+                        <h:outputText value="#{recruiterController.selected.email}" title="#{bundle.ViewRecruiterTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewRecruiterLabel_password}"/>
+                        <h:outputText value="#{recruiterController.selected.password}" title="#{bundle.ViewRecruiterTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewRecruiterLabel_client}"/>
+                        <h:outputText value="#{recruiterController.selected.client}" title="#{bundle.ViewRecruiterTitle_client}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RecruiterViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

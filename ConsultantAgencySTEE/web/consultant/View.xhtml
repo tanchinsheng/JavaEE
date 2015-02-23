@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConsultantViewDlg" widgetVar="ConsultantViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewConsultantTitle}">
+            <h:form id="ConsultantViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{consultantController.selected != null}">
+                        <h:outputText value="#{bundle.ViewConsultantLabel_consultantId}"/>
+                        <h:outputText value="#{consultantController.selected.consultantId}" title="#{bundle.ViewConsultantTitle_consultantId}"/>
+                        <h:outputText value="#{bundle.ViewConsultantLabel_email}"/>
+                        <h:outputText value="#{consultantController.selected.email}" title="#{bundle.ViewConsultantTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewConsultantLabel_password}"/>
+                        <h:outputText value="#{consultantController.selected.password}" title="#{bundle.ViewConsultantTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewConsultantLabel_hourlyRate}"/>
+                        <h:outputText value="#{consultantController.selected.hourlyRate}" title="#{bundle.ViewConsultantTitle_hourlyRate}"/>
+                        <h:outputText value="#{bundle.ViewConsultantLabel_billableHourlyRate}"/>
+                        <h:outputText value="#{consultantController.selected.billableHourlyRate}" title="#{bundle.ViewConsultantTitle_billableHourlyRate}"/>
+                        <h:outputText value="#{bundle.ViewConsultantLabel_hireDate}"/>
+                        <h:outputText value="#{consultantController.selected.hireDate}" title="#{bundle.ViewConsultantTitle_hireDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewConsultantLabel_resume}"/>
+                        <h:outputText value="#{consultantController.selected.resume}" title="#{bundle.ViewConsultantTitle_resume}"/>
+                        <h:outputText value="#{bundle.ViewConsultantLabel_recruiterId}"/>
+                        <h:outputText value="#{consultantController.selected.recruiterId}" title="#{bundle.ViewConsultantTitle_recruiterId}"/>
+                        <h:outputText value="#{bundle.ViewConsultantLabel_statusId}"/>
+                        <h:outputText value="#{consultantController.selected.statusId}" title="#{bundle.ViewConsultantTitle_statusId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ConsultantViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

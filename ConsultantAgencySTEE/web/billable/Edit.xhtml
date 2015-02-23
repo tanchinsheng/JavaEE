@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BillableEditDlg" widgetVar="BillableEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBillableTitle}">
+            <h:form id="BillableEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{billableController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBillableLabel_billableId}" for="billableId" />
+                        <p:inputText id="billableId" value="#{billableController.selected.billableId}" title="#{bundle.EditBillableTitle_billableId}" required="true" requiredMessage="#{bundle.EditBillableRequiredMessage_billableId}"/>
+                        <p:outputLabel value="#{bundle.EditBillableLabel_startDate}" for="startDate" />
+                        <p:calendar id="startDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{billableController.selected.startDate}" title="#{bundle.EditBillableTitle_startDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBillableLabel_endDate}" for="endDate" />
+                        <p:calendar id="endDate" pattern="MM/dd/yyyy HH:mm:ss" value="#{billableController.selected.endDate}" title="#{bundle.EditBillableTitle_endDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBillableLabel_hours}" for="hours" />
+                        <p:inputText id="hours" value="#{billableController.selected.hours}" title="#{bundle.EditBillableTitle_hours}" required="true" requiredMessage="#{bundle.EditBillableRequiredMessage_hours}"/>
+                        <p:outputLabel value="#{bundle.EditBillableLabel_hourlyRate}" for="hourlyRate" />
+                        <p:inputText id="hourlyRate" value="#{billableController.selected.hourlyRate}" title="#{bundle.EditBillableTitle_hourlyRate}" required="true" requiredMessage="#{bundle.EditBillableRequiredMessage_hourlyRate}"/>
+                        <p:outputLabel value="#{bundle.EditBillableLabel_billableHourlyRate}" for="billableHourlyRate" />
+                        <p:inputText id="billableHourlyRate" value="#{billableController.selected.billableHourlyRate}" title="#{bundle.EditBillableTitle_billableHourlyRate}" required="true" requiredMessage="#{bundle.EditBillableRequiredMessage_billableHourlyRate}"/>
+                        <p:outputLabel value="#{bundle.EditBillableLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{billableController.selected.description}" title="#{bundle.EditBillableTitle_description}" />
+                        <p:outputLabel value="#{bundle.EditBillableLabel_artifacts}" for="artifacts" />
+                        <p:inputTextarea rows="4" cols="30" id="artifacts" value="#{billableController.selected.artifacts}" title="#{bundle.EditBillableTitle_artifacts}" />
+                        <p:outputLabel value="#{bundle.EditBillableLabel_project}" for="project" />
+                        <p:selectOneMenu id="project" value="#{billableController.selected.project}" required="true" requiredMessage="#{bundle.EditBillableRequiredMessage_project}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{projectController.itemsAvailableSelectOne}"
+                                           var="projectItem"
+                                           itemValue="#{projectItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBillableLabel_consultantId}" for="consultantId" />
+                        <p:selectOneMenu id="consultantId" value="#{billableController.selected.consultantId}" required="true" requiredMessage="#{bundle.EditBillableRequiredMessage_consultantId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{consultantController.itemsAvailableSelectOne}"
+                                           var="consultantIdItem"
+                                           itemValue="#{consultantIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{billableController.update}" value="#{bundle.Save}" update="display,:BillableListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BillableEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BillableEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

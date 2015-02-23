@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RecruiterCreateDlg" widgetVar="RecruiterCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRecruiterTitle}">
+            <h:form id="RecruiterCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{recruiterController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRecruiterLabel_recruiterId}" for="recruiterId" />
+                        <p:inputText id="recruiterId" value="#{recruiterController.selected.recruiterId}" title="#{bundle.CreateRecruiterTitle_recruiterId}" required="true" requiredMessage="#{bundle.CreateRecruiterRequiredMessage_recruiterId}"/>
+                        <p:outputLabel value="#{bundle.CreateRecruiterLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{recruiterController.selected.email}" title="#{bundle.CreateRecruiterTitle_email}" required="true" requiredMessage="#{bundle.CreateRecruiterRequiredMessage_email}"/>
+                        <p:outputLabel value="#{bundle.CreateRecruiterLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{recruiterController.selected.password}" title="#{bundle.CreateRecruiterTitle_password}" required="true" requiredMessage="#{bundle.CreateRecruiterRequiredMessage_password}"/>
+                        <p:outputLabel value="#{bundle.CreateRecruiterLabel_client}" for="client" />
+                        <p:selectOneMenu id="client" value="#{recruiterController.selected.client}" >
+                            <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
+                                           var="clientItem"
+                                           itemValue="#{clientItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{recruiterController.create}" value="#{bundle.Save}" update="display,:RecruiterListForm:datalist,:growl" oncomplete="handleSubmit(args,'RecruiterCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RecruiterCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConsultantStatusEditDlg" widgetVar="ConsultantStatusEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditConsultantStatusTitle}">
+            <h:form id="ConsultantStatusEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{consultantStatusController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditConsultantStatusLabel_statusId}" for="statusId" />
+                        <p:inputText id="statusId" value="#{consultantStatusController.selected.statusId}" title="#{bundle.EditConsultantStatusTitle_statusId}" required="true" requiredMessage="#{bundle.EditConsultantStatusRequiredMessage_statusId}"/>
+                        <p:outputLabel value="#{bundle.EditConsultantStatusLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{consultantStatusController.selected.description}" title="#{bundle.EditConsultantStatusTitle_description}" required="true" requiredMessage="#{bundle.EditConsultantStatusRequiredMessage_description}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{consultantStatusController.update}" value="#{bundle.Save}" update="display,:ConsultantStatusListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ConsultantStatusEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ConsultantStatusEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
